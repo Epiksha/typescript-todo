@@ -1,0 +1,79 @@
+{
+    "name": "@Epiksha/typescript-boilerplate",
+    "version": "1.0.0",
+    "description": "A simple Typescript boilerplate using Webpack, Sass and Jest",
+    "main": "index.ts",
+    "scripts": {
+        "build:prod": "webpack --config webpack.prod.js",
+        "build:dev": "webpack --config webpack.dev.js",
+        "postpublish": "git checkout development && git merge master && git push",
+        "preversion": "npm test",
+        "postversion": "git push && git push --tags && npm publish",
+        "setup": "npm ci",
+        "start": "webpack serve --config webpack.dev.js",
+        "test": "jest",
+        "test:unit": "jest unit",
+        "test:integration": "jest integration"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Epiksha/carouslide.git"
+    },
+    "keywords": [
+        "Boilerplate",
+        "Typescript",
+        "Babel",
+        "Sass",
+        "Webpack",
+        "Jest"
+    ],
+    "author": "Calvin Tiley",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Epiksha/carouslide/issues"
+    },
+    "homepage": "https://github.com/Epiksha/carouslide#readme",
+    "babel": {
+        "presets": [
+            "@babel/preset-env"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
+    },
+    "devDependencies": {
+        "@babel/preset-env": "^7.14.5",
+        "@commitlint/cli": "^11.0.0",
+        "@commitlint/config-conventional": "^11.0.0",
+        "@types/jest": "^26.0.23",
+        "@types/node": "^15.12.2",
+        "babel-minify-webpack-plugin": "^0.3.1",
+        "clean-webpack-plugin": "^4.0.0-alpha.0",
+        "css-loader": "^5.2.6",
+        "css-minimizer-webpack-plugin": "^3.0.1",
+        "file-loader": "^6.2.0",
+        "html-loader": "^2.1.2",
+        "html-webpack-plugin": "^5.3.1",
+        "husky": "^4.3.0",
+        "jest": "^27.0.4",
+        "mini-css-extract-plugin": "^1.6.0",
+        "postcss": "^8.3.4",
+        "sass": "^1.35.0",
+        "sass-loader": "^12.1.0",
+        "sass-utilizer": "^3.2.7",
+        "style-loader": "^2.0.0",
+        "svg-sprite-loader": "^6.0.7",
+        "svgo-loader": "^3.0.0",
+        "ts-jest": "^27.0.3",
+        "ts-loader": "^9.2.3",
+        "tslint": "^6.1.3",
+        "tslint-config-standard": "^9.0.0",
+        "typescript": "^4.3.2",
+        "webpack": "^5.39.0",
+        "webpack-cli": "^4.7.2",
+        "webpack-dev-server": "^3.11.2",
+        "webpack-merge": "^5.8.0"
+    }
+}

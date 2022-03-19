@@ -1,0 +1,63 @@
+@use 'sass:list';
+
+$colors: (white, black);
+
+// Primary Pallette
+$astronaut: #224e72;
+$allports: #007595;
+$persian-green: #009CA2;
+$mountain-meadow: #22C198;
+$feijoa: #93E180;
+$festival: #F9F871;
+
+$colors: list.join($colors, ($astronaut, $allports, $persian-green, $mountain-meadow, $feijoa, $festival), $separator: comma);
+
+// Secondary Pallette
+$cadet-blue: #A0ACBD;
+$oxford-blue: #354A54;
+$limed-spruce: #324B4C;
+$mineral-green: #374B43;
+$lunar-green: #3F4A3C;
+$kelp: #494738;
+
+$colors: list.join($colors, ($cadet-blue, $oxford-blue, $mineral-green, $limed-spruce, $lunar-green, $kelp), $separator: comma);
+
+// Tertiary Pallette
+$pale-sky: #6C7888;
+$cascade: #95B0B2;
+$gull-gray: #98AFBA;
+$pewter: #99B0A7;
+$bud: #A3AF9E;
+$gray-olive: #AEAC9A;
+
+$colors: list.join($colors, ($pale-sky, $cascade, $gull-gray, $pewter, $bud, $gray-olive), $separator: comma);
+
+// Quaternary Pallette
+$cosmic: #6E3B4F;
+$strikemaster: #895D86;
+$ship-cove: #8588C3;
+$dodger-blue: #20B5FF;
+$bright-turquoise: #00C9FE;
+$aqua: #00F4F3;
+
+$colors: list.join($colors, ($dodger-blue, $cosmic, $strikemaster, $ship-cove, $bright-turquoise, $aqua), $separator: comma);
+
+// Quinary Pallette
+$coral-tree: #A36C80;
+$pacific-blue: #0092C5;
+$waikawa-gray: #51568D;
+$lilac: #BF90BC;
+$lochmara: #0080CA;
+$robin-egg-blue: #00BBBB;
+
+$colors: list.join($colors, ($coral-tree, $pacific-blue, $waikawa-gray, $lilac, $lochmara, $robin-egg-blue), $separator: comma);
+
+// Grayscale Pallette
+$dove-gray: #696969;
+$gray: #858585;
+$silver-chalice: #A2A2A2;
+$silver: #C0C0C0;
+$alto: #DFDFDF;
+$gallery: #fafafa;
+
+$colors: list.join($colors, ($dove-gray, $gray, $silver-chalice, $silver, $alto, $gallery), $separator: comma);
