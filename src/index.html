@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <title>Task Master</title>
+    </head>
+
+    <body>
+        <header class="calendar">
+            <span class="calendar__dayNumber js-calendar-day-number"></span>
+
+            <span class="calendar__monthYear js-calendar-month-year"></span>
+        </header>
+
+        <div class="tasks">
+            <div class="tasks__wrapper">
+                <ul class="tasks__list js-task-list"></ul>
+            </div>
+
+            <footer class="tasks__footer">
+                <button class="button button--modal js-button-modal">
+                    New Task
+                </button>
+            </footer>
+        </div>
+
+        <div class="modal js-modal">
+            <form class="modal__form js-task-modal">
+                <header class="modal__header">
+                    <div class="modal__title">Create Task</div>
+                </header>
+
+                <div class="modal__inner">
+                    <fieldset class="fieldset fieldset--modal">
+                        <label
+                            class="label label--modal"
+                            for="modal-text"
+                        >
+                            <span id="modal-task-name" class="label__text">Task Name</span>
+                            
+                            <input
+                                aria-labelledby="modal-task-name"
+                                type="text"
+                                name="modal-text"
+                                id="modal-text"
+                                class="input input--modal js-modal-task-name"
+                                placeholder="Enter task name..."
+                            >
+                        </label>
+                    </fieldset>
+                    
+                    <fieldset class="fieldset fieldset--modal">
+                        <label
+                            class="label label--modal"
+                            for="modal-text"
+                        >
+                            <span class="label__text">Priority</span>
+
+                            <div class="label__inner">
+                                <button
+                                    class="button button--priority button--priority--low js-button-priority"
+                                    aria-label="Low Priority"
+                                    data-priority="low"
+                                >
+                                    <span class="button__text">!</span>
+                                </button>
+                                
+                                <button
+                                    class="button button--priority button--priority--medium js-button-priority"
+                                    aria-label="Medium Priority"
+                                    data-priority="medium"
+                                >
+                                    <span class="button__text">!</span>
+                                </button>
+                                
+                                <button
+                                    class="button button--priority button--priority--high js-button-priority"
+                                    aria-label="High Priority"
+                                    data-priority="high"
+                                    type="submit"
+                                >
+                                    <span class="button__text">!</span>
+                                </button>
+                            </div>
+                        </label>
+                    </fieldset>
+                </div>
+
+                <footer class="modal__footer">
+                    <button
+                        type="submit"
+                        class="button button--add js-button-add"
+                    >
+                        <div class="icon icon--add">
+                            <span class="icon__line"></span>
+                            <span class="icon__line icon__line--vertical"></span>
+                        </div>
+                    </button>
+                </footer>
+            </form>
+        </div>
+    </body>
+</html>

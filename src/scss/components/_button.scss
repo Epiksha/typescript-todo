@@ -1,0 +1,68 @@
+@use 'sass:color';
+@use 'sass:list';
+
+@use '../abstracts' as *;
+
+.button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    
+    background-color: transparent;
+
+    &--modal {
+        width: 100%;
+        padding: 2rem;
+        border-top: solid 0.2rem $color4;
+
+        background-color: color.adjust($color9, $alpha: -0.4);
+        color: white;
+
+        font-size: 2.4rem;
+        font-weight: 600;
+        letter-spacing: 0.05rem;
+    }
+
+    &--add {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        border-radius: 50%;
+
+        background-color: $color9;
+    }
+
+    &--priority {
+        box-sizing: border-box;
+        width: 4rem;
+        height: 4rem;
+        border: solid 0.3rem;
+        border-radius: 50%;
+
+        color: white;
+
+        font-size: 2.4rem;
+        font-weight: 600;
+
+        &:not(:first-child) {
+            margin-left: 2rem;
+        }
+
+        &.active {
+            color: white;
+        }
+
+        @each $key, $value in (low: $color10, medium: $color1, high: $color11) {
+            &--#{$key} {
+                color: $value;
+
+                &.active {
+                    border-color: $value;
+                    background-color: $value;
+                }
+            }
+        }
+    }
+}

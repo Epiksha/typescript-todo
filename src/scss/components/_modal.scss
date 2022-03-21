@@ -1,0 +1,60 @@
+@use '../abstracts' as *;
+
+.modal {
+    display: none;
+
+    flex-direction: column;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    padding: 1rem;
+
+    &.active {
+        display: flex;
+    }
+
+    &__header {
+        text-align: center;
+
+        padding: 2rem 0;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+
+        background-color: $color8;
+    }
+
+    &__title {
+        color: white;
+
+        font-size: 2.4rem;
+        font-weight: 600;
+        letter-spacing: 0.1rem;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+
+        box-sizing: border-box;
+        height: 100%;
+        border-radius: 1rem;
+
+        background-color: white;
+        box-shadow: $boxShadow1;
+    }
+
+    &__inner {
+        flex-grow: 1;
+
+        padding: 4rem 2rem;
+    }
+
+    &__footer {
+        position: relative;
+
+        padding: 5rem 0 0;
+    }
+}

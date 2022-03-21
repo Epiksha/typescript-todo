@@ -1,8 +1,46 @@
-@use '_defaults.scss';
-@use '_utilities.scss';
-@use '_vendors.scss';
+@use '_abstracts.scss' as *;
 
 // Component Imports
+@use 'components/_button.scss';
+@use 'components/_calendar.scss';
+@use 'components/_fieldset.scss';
+@use 'components/_icon.scss';
+@use 'components/_input.scss';
+@use 'components/_label.scss';
+@use 'components/_modal.scss';
+@use 'components/_task.scss';
+@use 'components/_tasks.scss';
 
-// Utilitizer
-@use '_utilizer.scss';
+*, * > * {
+    box-sizing: border-box;
+}
+
+html {
+    background-image: linear-gradient(to bottom, $color6, $color4);
+
+    font-size: 62.5%;
+}
+
+body {
+    height: 100vh;
+    
+    font-size: 1.6rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+ol, ul {
+    padding-left: 0;
+
+    list-style: none;
+}

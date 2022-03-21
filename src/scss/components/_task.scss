@@ -1,0 +1,25 @@
+@use '../abstracts' as *;
+
+.task {
+    padding: 2rem;
+    border-radius: 2rem;
+
+    background-color: $color13;
+    color: $color5;
+
+    font-weight: 600;
+
+    &:not(:first-child) {
+        margin-top: 2rem;
+    }
+
+    &__item {
+        flex: 1;
+
+        &--title {
+            color: $color8;
+
+            font-size: 1.8rem;
+        }
+    }
+}

@@ -1,13 +1,22 @@
-const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const { resolve } = require('path');
+const ESLintPlugin = require('eslint-webpack-plugin');
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 module.exports = {
-    // Entry Files
     entry: [
         './src/index.ts',
     ],
 
-    // Loaders
+    output: {
+        path: resolve(__dirname, 'dist'),
+        filename: 'bundle.js',
+    },
+
+    plugins: [
+        new ESLintPlugin(),
+        new SpriteLoaderPlugin(),
+    ],
+
     module: {
         rules: [
             {
@@ -20,43 +29,21 @@ module.exports = {
                 loader: 'html-loader',
             },
             {
-                test: /\.svg$/,
-                use: [
-                    {
-                        loader: 'svg-sprite-loader',
-                        options: {},
-                    },
-                    'svgo-loader',
-                ],
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                type: 'asset/resource',
+                include: [resolve(__dirname, 'src/assets/images')],
             },
             {
-                test: /\.(woff|ttf|eot|jpe?g|png)$/,
-                use: {
-                    loader: 'file-loader',
-                    options: {
-                        name: "[name].[hash].[ext]",
-                        outputPath: 'assets/',
-                    },
-                },
+                test: /\.svg$/,
+                include: [resolve(__dirname, 'src/assets/icons')],
+                use: ['svg-sprite-loader', 'svgo-loader']
             },
         ],
     },
 
-    plugins: [
-        new SpriteLoaderPlugin(),
-    ],
-
-    // Resolve 'import' declarations in files with the provided extensions
     resolve: {
         extensions: ['.ts', '.js'],
     },
 
-    // Generate Source Map
     devtool: 'inline-source-map',
-
-    // Output Location
-    output: {
-        path: resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
-    },
 };

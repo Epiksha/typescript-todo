@@ -1,0 +1,25 @@
+@use 'sass:color';
+@use '../abstracts' as *;
+
+.calendar {
+    display: flex;
+    flex-direction: column;
+
+    padding: 2rem;
+
+    background-color: $color15;
+    color: white;
+    box-shadow: 0 0.5rem 1rem 0.2rem color.adjust($color14, $alpha: -0.8);
+
+    &__dayNumber {
+        font-size: 4.2rem;
+        line-height: 1;
+    }
+
+    &__monthYear {
+        margin-top: 1rem;
+
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+}

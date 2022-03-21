@@ -10,6 +10,9 @@ module.exports = merge(common, {
     devServer: {
         port: 3000,
         historyApiFallback: true,
+        hot: true,
+        liveReload: true,
+        watchFiles: ['src/index.html']
     },
 
     // Loaders
@@ -34,7 +37,7 @@ module.exports = merge(common, {
 
     plugins: [
         new HtmlWebpackPlugin({
-            template: 'src/public/index.html',
+            template: 'src/index.html',
         }),
     ],
 });

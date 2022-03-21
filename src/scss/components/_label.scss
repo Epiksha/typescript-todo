@@ -1,0 +1,17 @@
+@use '../abstracts' as *;
+
+.label {
+    color: $color12;
+
+    font-size: 1.8rem;
+    font-weight: 500;
+
+    &--modal {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__inner {
+        margin-top: 1rem;
+    }
+}
