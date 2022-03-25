@@ -5,9 +5,7 @@ export default ((): void => {
     const svgs = require.context('../../assets/icons/', true, /\.svg$/);
     svgs.keys().forEach(svgs);
 
-    const calendarDayNumberElement: HTMLElement = document.querySelector('.js-calendar-day-number');
-    const monthYearElement: HTMLElement = document.querySelector('.js-calendar-month-year');
+    const calendarDay: HTMLElement = document.querySelector('.js-calendar-day-number');
 
-    calendarDayNumberElement.textContent = `${Calendar.getDate('dddd')} ${Calendar.getDate('Do')}`;
-    monthYearElement.textContent = `${Calendar.getDate('MMMM')}, ${Calendar.getDate('YYYY')}`;
+    calendarDay.textContent = `${Calendar.getDate('dddd')} ${Calendar.getDate('Do')} ${Calendar.getDate('MMMM')}`;
 })();

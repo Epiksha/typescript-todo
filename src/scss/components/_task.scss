@@ -1,11 +1,16 @@
 @use '../abstracts' as *;
 
 .task {
-    padding: 2rem;
-    border-radius: 2rem;
+    display: flex;
 
-    background-color: $color13;
-    color: $color5;
+    position: relative;
+
+    min-height: 10rem;
+    padding: 2rem;
+    border: solid 0.3rem currentColor;
+    border-radius: 1rem;
+
+    background-color: white;
 
     font-weight: 600;
 
@@ -13,13 +18,59 @@
         margin-top: 2rem;
     }
 
-    &__item {
-        flex: 1;
+    &--low {
+        color: $priority-low;
+    }
+    
+    &--medium {
+        color: $priority-medium;
+    }
+    
+    &--high {
+        color: $priority-high;
+    }
 
-        &--title {
-            color: $color8;
+    &:before {
+        content: '';
+        
+        position: absolute;
+        top: 50%;
+        left: 2rem;
+        transform: translateY(-50%);
 
-            font-size: 1.8rem;
+        width: 0.5rem;
+        height: calc(100% - 4rem);
+        border-radius: 2rem;
+
+        background-color: currentColor;
+    }
+
+    &__content {
+        flex-grow: 1;
+
+        padding-left: 2rem;
+
+        color: black;
+    }
+
+    &__heading {
+        font-size: 1.8rem;
+    }
+
+    &__duration {
+        color: $color4;
+
+        font-size: 1.2rem;
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: flex-end;
+
+        margin-top: 2rem;
+
+        & > * {
+            flex: 1;
         }
     }
 }

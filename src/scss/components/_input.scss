@@ -1,16 +1,14 @@
 @use '../abstracts' as *;
 
 .input {
-    margin-top: 2rem;
-    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    padding: 1rem 0;
     border: none;
-    border-bottom: solid 0.1rem $color12;
+    border-bottom: solid 0.1rem $color4;
 
     font-size: 1.8rem;
 
     &::placeholder {
-        color: $color12;
-
         font-weight: 400;
     }
 }

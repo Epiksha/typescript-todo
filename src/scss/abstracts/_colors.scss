@@ -1,23 +1,15 @@
 @use 'sass:color';
 @use 'sass:list';
 
-$colors: (white, black);
-
 // Primary Pallette
-$color1: #4EA1D3;
-$color2: #F4A4A4;
-$color3: #F8C8C6;
-$color4: #9AA4EC;
-$color5: #6474E5;
-$color6: #7F61E7;
-$color7: #C79AFF;
-$color8: #A82E9B;
-$color9: #2C1354;
-$color10: #36914d;
-$color11: #8f2222;
-$color12: #a5a5a5;
-$color13: #f4effb;
-$color14: #822de2;
-$color15: #a468f3;
+$color1: #6C1C5C;
+$color2: #2A2834;
+$color3: #9b7ae7;
+$color4: #777777;
+$color5: #7c0202;
 
 $boxShadow1: 0.2rem 0.2rem 0.5rem 0.2rem color.adjust(black, $alpha: -0.9);
+
+$priority-low: #18ad68;
+$priority-medium: #db9f50;
+$priority-high: #d35949;

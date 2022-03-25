@@ -3,42 +3,43 @@ import Modal from './ts/utilities/modal';
 import TaskList from './ts/tasklist';
 
 import './scss/entry.scss';
+import elements from './ts/elements';
 
 // Elements
-const taskListElement: HTMLUListElement = document.querySelector('.js-task-list');
-const modalButton: HTMLButtonElement = document.querySelector('.js-button-modal');
-const priorityButtons: HTMLElement[] = [].slice.call(document.querySelectorAll('.js-button-priority'));
-const modalElement: HTMLElement = document.querySelector('.js-modal');
-const modalTextInputElement: HTMLInputElement = document.querySelector('.js-modal-task-name');
-const taskFormElement: HTMLElement = document.querySelector('.js-task-modal');
+const createTaskModal = new Modal(elements.create.modal);
+const taskList = new TaskList(elements.taskList);
 
-const taskModal = new Modal(modalElement);
-const taskList = new TaskList(taskListElement);
+elements.create.buttons.modalOpen.addEventListener('click', () => createTaskModal.toggle());
 
-modalButton.addEventListener('click', () => taskModal.toggle());
-
-modalTextInputElement.addEventListener('input', (event: Event) => {
-    taskList.setText((<HTMLInputElement>event.target).value);
+elements.create.inputs.title.addEventListener('input', (event: Event) => {
+    taskList.setTitle((<HTMLInputElement>event.target).value);
 });
 
-priorityButtons.forEach(priorityButton => {
+elements.create.inputs.duration.addEventListener('input', (event: Event) => {
+    taskList.setDuration(Number((<HTMLInputElement>event.target).value));
+});
+
+elements.create.buttons.priority.forEach(priorityButton => {
     priorityButton.addEventListener('click', (event: Event) => {
         event.preventDefault();
 
-        priorityButtons.forEach(priorityButton => priorityButton.classList.remove('active'));
+        elements.create.buttons.priority.forEach(priorityButton => priorityButton.classList.remove('active'));
         priorityButton.classList.add('active');
         
         taskList.setPriority(priorityButton.getAttribute('data-priority'));
     });
 });
 
-taskFormElement.addEventListener('submit', (event: Event) => {
+elements.create.form.addEventListener('submit', (event: Event) => {
     event.preventDefault();
 
     taskList.addTask();
-    taskModal.toggle();
+
+    createTaskModal.toggle();
     
-    priorityButtons.forEach(priorityButton => priorityButton.classList.remove('active'));
-    modalTextInputElement.value = '';
+    elements.create.buttons.priority.forEach(priorityButton => priorityButton.classList.remove('active'));
+    elements.create.inputs.title.value = '';
+    elements.create.inputs.duration.value = '';
+
     taskList.clear();
 });

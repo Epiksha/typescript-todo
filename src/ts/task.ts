@@ -1,13 +1,18 @@
+import { ITaskList } from './tasklist';
 import HTMLUtility from './utilities/dom';
-import Calendar from './utilities/calendar';
 
-export interface ITask {
-    baseElement: HTMLLIElement,
-    parentElement: HTMLUListElement,
+export interface IBaseTask {
+    duration: (number | null),
     priority: string,
     title: string,
+};
+
+export interface ITask extends IBaseTask {
+    baseElement: HTMLLIElement,
+    parentElement: HTMLUListElement,
+    tasklist: ITaskList,
     buildStructure(): void,
-}
+};
 
 export default class Task extends HTMLUtility implements ITask {
     baseElement = document.createElement('li');
@@ -16,6 +21,8 @@ export default class Task extends HTMLUtility implements ITask {
         public parentElement: HTMLUListElement,
         public title: string,
         public priority: string,
+        public duration: number,
+        public tasklist: ITaskList,
         classes: (string|string[]) = '',
     ) {
         super();
@@ -30,22 +37,31 @@ export default class Task extends HTMLUtility implements ITask {
     }
 
     buildStructure() {
-        this.addClass(this.baseElement, 'task');
+        const taskContentWrapperElement: HTMLDivElement = document.createElement('div');
+        const taskTitleElement: HTMLHeadingElement = document.createElement('h2');
+        const taskDurationElement: HTMLSpanElement = document.createElement('span');
+        const taskFooterElement: HTMLElement = document.createElement('footer');
+        const taskDeleteButtonElement: HTMLButtonElement = document.createElement('button');
+        
+        this.addClass(this.baseElement, ['task', `task--${this.priority}`]);
+        this.addClass(taskContentWrapperElement, 'task__content');
+        this.addClass(taskTitleElement, 'task__heading');
+        this.addClass(taskDurationElement, 'task__duration');
+        this.addClass(taskFooterElement, 'task__footer');
+        this.addClass(taskDeleteButtonElement, ['button', 'button--delete']);
 
-        ['title', 'priority', 'date'].forEach(item => {
-            const taskChild: HTMLDivElement = document.createElement('div');
-            
-            this.addClass(taskChild, ['task__item', `task__item--${item}`]);
+        taskDeleteButtonElement.addEventListener('click', () => this.tasklist.deleteTask(this));
 
-            if (item === 'title') {
-                this.appendToParent(taskChild, document.createTextNode(this.title));
-            } else if (item === 'priority') {
-                this.appendToParent(taskChild, document.createTextNode(this.priority.toString()));
-            } else if (item === 'date') {
-                this.appendToParent(taskChild, document.createTextNode(Calendar.getDate()));
-            }
+        this.appendToParent(taskTitleElement, document.createTextNode(this.title));
+        this.appendToParent(taskDurationElement, document.createTextNode(`${this.duration} minutes`));
+        this.appendToParent(taskDeleteButtonElement, document.createTextNode('Delete'));
 
-            this.appendToParent(this.baseElement, taskChild);
-        });
+        this.appendToParent(taskFooterElement, taskDeleteButtonElement);
+        
+        this.appendToParent(taskContentWrapperElement, taskTitleElement);
+        this.appendToParent(taskContentWrapperElement, taskDurationElement);
+        this.appendToParent(taskContentWrapperElement, taskFooterElement);
+
+        this.appendToParent(this.baseElement, taskContentWrapperElement);
     }
 };

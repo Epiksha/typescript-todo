@@ -10,17 +10,20 @@
     
     background-color: transparent;
 
+    transition: background-color 250ms;
+    cursor: pointer;
+
     &--modal {
-        width: 100%;
-        padding: 2rem;
-        border-top: solid 0.2rem $color4;
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
 
-        background-color: color.adjust($color9, $alpha: -0.4);
+        padding: 1rem;
+        border: solid 0.1rem;
+        border-radius: 50%;
+
+        background-color: $color3;
         color: white;
-
-        font-size: 2.4rem;
-        font-weight: 600;
-        letter-spacing: 0.05rem;
     }
 
     &--add {
@@ -31,7 +34,8 @@
 
         border-radius: 50%;
 
-        background-color: $color9;
+        background-color: $color1;
+        box-shadow: 0.2rem 0.2rem 1rem 0.2rem color.adjust($color2, $alpha: -0.7);
     }
 
     &--priority {
@@ -54,7 +58,7 @@
             color: white;
         }
 
-        @each $key, $value in (low: $color10, medium: $color1, high: $color11) {
+        @each $key, $value in (low: $priority-low, medium: $priority-medium, high: $priority-high) {
             &--#{$key} {
                 color: $value;
 
@@ -63,6 +67,18 @@
                     background-color: $value;
                 }
             }
+        }
+    }
+
+    &--delete {
+        padding: 1rem;
+        border-radius: 1rem;
+
+        background-color: $color5;
+        color: white;
+
+        &:hover, &:focus, &:active {
+            background-color: color.adjust($color5, $lightness: 5%);
         }
     }
 }
